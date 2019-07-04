@@ -1,0 +1,45 @@
+/*
+ * This little program was written by Dawood Morris kaundama
+ * It finds the binary value of a given decimal number
+ * Currently it only computes non negative integers
+ */
+import java.util.ArrayList;
+/**
+ *
+ * @author dawood
+ */
+public class Getbinof {
+
+    /**
+     * @param args the command line arguments to be used when calling this program
+     * @author Dawood Feyard Morris Kaundama
+     */
+    public static void main(String[] args) {
+       if(args.length < 1){
+            System.out.println("Usage: Getbinof number");
+            System.out.println("Where number is the number to find its binary value.");
+            System.out.println("Example: Getbinof 100");
+        }else{
+           //process
+           ArrayList<Integer> bins = new ArrayList<Integer>(); 
+           Integer input = new Integer(args[0]).intValue();
+           int i = (int)input;
+           while(i > 1){
+               bins.add((i%2));
+               i = i/2;
+           }
+           if(i == 1){
+               //perform legal division, when doing with a pen and paper we still divide by 2 and get 0 remainder 1
+               //to fit our purpose of binary math
+               bins.add(i);//or add 1, the last dividend
+           }
+           System.out.println("Binary Value of "+input+":");
+           System.out.print("=> ");
+           for(int xi = bins.size()-1; xi >= 0; xi--){
+               System.out.print(bins.get(xi));
+           }
+           System.out.println();
+        }
+    }
+    
+}
